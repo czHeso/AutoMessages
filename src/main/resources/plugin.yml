@@ -9,7 +9,7 @@ website: snezik.cz
 commands:
   automessage:
     description: Reload server
-    usage: /<command> [reload]
+    usage: /<command>
     permission: am.reload
     permission-message: ""
 
