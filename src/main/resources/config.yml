@@ -1,0 +1,11 @@
+# Time between messages in seconds
+timeDelay: 280
+# Randomize messages?
+random: false
+# Sound effect on message send - use names from https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+# Message List
+Messages:
+  - "&eFirst message, change in config.yml"
+  - "&cSecond message, change in config.yml"
+  - "&bThird message, change in config.yml"

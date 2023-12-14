@@ -1,0 +1,19 @@
+name: AutoMessages
+version: '${version}'
+main: cz.hesovodoupe.automessages.AutoMessages
+api-version: '1.19'
+authors: [Heso]
+description: Command for POLICE RP
+website: snezik.cz
+
+commands:
+  automessage:
+    description: Reload server
+    usage: /<command> [reload]
+    permission: am.reload
+    permission-message: ""
+
+permissions:
+  am.reload:
+    description: "Permissions for reload"
+    default: false
