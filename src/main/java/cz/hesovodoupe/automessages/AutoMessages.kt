@@ -19,6 +19,8 @@ class AutoMessages : JavaPlugin() {
     private var randomizeMessages: Boolean = false
     private lateinit var messages: List<String>
     private lateinit var soundEffect: String
+    private var allowRaw: Boolean = false
+    private lateinit var rawMessages: List<String>
 
     override fun onEnable() {
         saveDefaultConfig()
@@ -37,6 +39,7 @@ class AutoMessages : JavaPlugin() {
         println("Sound Effect: $soundEffect")
         println("Messages:")
         messages.forEach { println(" - $it") }
+        println("Raw: $allowRaw")
 
         startMessageSendingTask()
         registerCommands()
@@ -47,6 +50,8 @@ class AutoMessages : JavaPlugin() {
         randomizeMessages = configManager.shouldRandomizeMessages()
         messages = configManager.loadMessages()
         soundEffect = configManager.loadSoundEffect()
+        rawMessages = configManager.rawMessages()
+        allowRaw = configManager.useRaw()
     }
 
     fun startMessageSendingTask() {
@@ -55,15 +60,39 @@ class AutoMessages : JavaPlugin() {
                 loadConfiguration() // Reload the configuration values
 
                 val messageToSend: String = if (randomizeMessages) {
-                    messages.random()
-                } else {
-                    messageIndex = (messageIndex + 1) % messages.size
-                    messages[messageIndex]
-                }
 
-                for (player in Bukkit.getOnlinePlayers()) {
-                    playSoundForPlayer(player, soundEffect)
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageToSend))
+                    if (allowRaw){
+                        rawMessages.random()
+                    }
+                    else {
+                        messages.random()
+                    }
+                } else {
+                    if (allowRaw){
+                        messageIndex = (messageIndex + 1) % rawMessages.size
+                        rawMessages[messageIndex]
+                    }
+                    else {
+                        messageIndex = (messageIndex + 1) % messages.size
+                        messages[messageIndex]
+                    }
+                }
+                if(allowRaw)
+                {
+                    if(Bukkit.getOnlinePlayers().size > 0)
+                    {
+                        val command = "tellraw @a $messageToSend"
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command)
+                        for (player in Bukkit.getOnlinePlayers()) {
+                            playSoundForPlayer(player, soundEffect)
+                        }
+                    }
+                }
+                else {
+                    for (player in Bukkit.getOnlinePlayers()) {
+                        playSoundForPlayer(player, soundEffect)
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageToSend))
+                    }
                 }
             }
         }.runTaskTimer(this, 0L, (timeDelay * 20L))
