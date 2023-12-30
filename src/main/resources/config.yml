@@ -2,23 +2,30 @@
 
 # Time between messages in seconds
 timeDelay: 280
+
 # Randomize messages?
 random: false
+
 # Sound effect on message send - use names from https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+sound: 'ENTITY_EXPERIENCE_ORB_PICKUP'
+
 # Message List
 # Supports colors using &
 Messages:
-  - "&eFirst message, change in config.yml"
-  - "&cSecond message, change in config.yml"
-  - "&bThird message, change in config.yml"
+  - '&eFirst message, change in config.yml'
+  - '&cSecond message, change in config.yml'
+  - '&bThird message, change in config.yml'
+
 # Allow Raw Messages? (List below)
 # If you use RAW Messages, standard will be deactivated
 allowRaw: false
+
 # Row Messages - use for hover messages, etc..
 # How to use raw messages? https://www.digminecraft.com/game_commands/tellraw_command.php
-# The only difference is that you have to use \ between the "categories" for the config to handle it correctly.
-# It is still removed in the post-process of the plugin, but otherwise the config wouldn't work.
 RawMessages:
-  - "{\"text\":\"Hover message!\",\"color\":\"red\",\"bold\":false,\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"I am a hover message!\",\"color\":\"orange\",\"bold\":true}]}}}"
-  - "[\"\",{\"text\":\"Raw message with URL!\",\"color\":\"purple\",\"bold\":false,\"underlined\":false,\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://www.dsc.gg/hesodev\"}}]"
+  - '{"text":"Hover message!","color":"red","bold":false,"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"I am a hover message!","color":"orange","bold":true}]}}}'
+  - '{"text":"Click for command!","color":"white","bold":false,"clickEvent":{"action":"run_command","value":"/say COMMAND WORKS"}}'
+
+
+#DO NOT EDIT THIS
+configVersion: '4.0'

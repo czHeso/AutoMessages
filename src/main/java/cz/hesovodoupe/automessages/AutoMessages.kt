@@ -19,6 +19,7 @@ class AutoMessages : JavaPlugin() {
     private var randomizeMessages: Boolean = false
     private lateinit var messages: List<String>
     private lateinit var soundEffect: String
+    private lateinit var configVer: String
     private var allowRaw: Boolean = false
     private lateinit var rawMessages: List<String>
 
@@ -34,16 +35,12 @@ class AutoMessages : JavaPlugin() {
         configManager = ConfigManager(this)
         loadConfiguration()
 
-        println("Time Delay: $timeDelay seconds")
-        println("Randomize Messages: $randomizeMessages")
-        println("Sound Effect: $soundEffect")
-        println("Messages:")
-        messages.forEach { println(" - $it") }
-        if(allowRaw)
+        val currectVersion = description.version
+
+        if(configVer != currectVersion)
         {
-            println("Raw: $allowRaw")
-            println("RawMessages")
-            rawMessages.forEach { println(" - $it") }
+            println("Your config is $configVer but plugin is now $currectVersion")
+            println("Please remove config and let it generate again!")
 
         }
 
@@ -59,6 +56,7 @@ class AutoMessages : JavaPlugin() {
         soundEffect = configManager.loadSoundEffect()
         rawMessages = configManager.rawMessages()
         allowRaw = configManager.useRaw()
+        configVer = configManager.loadConfigVer()
     }
 
     fun startMessageSendingTask() {
@@ -116,5 +114,6 @@ class AutoMessages : JavaPlugin() {
 
         player.playSound(player.location, Sound.valueOf(soundEffect), soundVolume, soundPitch)
     }
+
 
 

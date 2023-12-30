@@ -26,6 +26,9 @@ class ConfigManager(private val plugin: JavaPlugin) {
     fun loadSoundEffect(): String {
         return plugin.config.getString("sound", "test") ?: "test"
     }
+    fun loadConfigVer(): String {
+        return plugin.config.getString("configVersion", "3.2") ?: "3.2"
+    }
 
     fun loadMessages(): List<String> {
         val config: FileConfiguration = plugin.config
