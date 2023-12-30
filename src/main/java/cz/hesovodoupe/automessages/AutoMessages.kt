@@ -39,7 +39,14 @@ class AutoMessages : JavaPlugin() {
         println("Sound Effect: $soundEffect")
         println("Messages:")
         messages.forEach { println(" - $it") }
-        println("Raw: $allowRaw")
+        if(allowRaw)
+        {
+            println("Raw: $allowRaw")
+            println("RawMessages")
+            rawMessages.forEach { println(" - $it") }
+
+        }
+
 
         startMessageSendingTask()
         registerCommands()
