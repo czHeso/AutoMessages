@@ -22,6 +22,9 @@ allowRaw: false
 
 # Row Messages - use for hover messages, etc..
 # How to use raw messages? https://www.digminecraft.com/game_commands/tellraw_command.php
+# or use this generator https://minecraft.tools/en/tellraw.php
+
+# More support on dsc.gg/hesodev
 RawMessages:
   - '{"text":"Hover message!","color":"red","bold":false,"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"I am a hover message!","color":"orange","bold":true}]}}}'
   - '{"text":"Click for command!","color":"white","bold":false,"clickEvent":{"action":"run_command","value":"/say COMMAND WORKS"}}'

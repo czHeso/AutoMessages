@@ -64,44 +64,27 @@ class AutoMessages : JavaPlugin() {
             override fun run() {
                 loadConfiguration() // Reload the configuration values
 
-                val messageToSend: String = if (randomizeMessages) {
-
-                    if (allowRaw){
-                        rawMessages.random()
-                    }
-                    else {
-                        messages.random()
-                    }
+                val messageToSend = if (randomizeMessages) {
+                    if (allowRaw) rawMessages.random() else messages.random()
                 } else {
-                    if (allowRaw){
-                        messageIndex = (messageIndex + 1) % rawMessages.size
-                        rawMessages[messageIndex]
-                    }
-                    else {
-                        messageIndex = (messageIndex + 1) % messages.size
-                        messages[messageIndex]
-                    }
+                    messageIndex = (messageIndex + 1) % if (allowRaw) rawMessages.size else messages.size
+                    if (allowRaw) rawMessages[messageIndex] else messages[messageIndex]
                 }
-                if(allowRaw)
-                {
-                    if(Bukkit.getOnlinePlayers().size > 0)
-                    {
-                        val command = "tellraw @a $messageToSend"
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command)
-                        for (player in Bukkit.getOnlinePlayers()) {
-                            playSoundForPlayer(player, soundEffect)
-                        }
-                    }
-                }
-                else {
-                    for (player in Bukkit.getOnlinePlayers()) {
-                        playSoundForPlayer(player, soundEffect)
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messageToSend))
+
+                if (allowRaw && Bukkit.getOnlinePlayers().isNotEmpty()) {
+                    val command = "tellraw @a $messageToSend"
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command)
+                    Bukkit.getOnlinePlayers().forEach { playSoundForPlayer(it, soundEffect) }
+                } else {
+                    Bukkit.getOnlinePlayers().forEach {
+                        playSoundForPlayer(it, soundEffect)
+                        it.sendMessage(ChatColor.translateAlternateColorCodes('&', messageToSend))
                     }
                 }
             }
-        }.runTaskTimer(this, 0L, (timeDelay * 20L))
+        }.runTaskTimer(this, 0L, timeDelay * 20L)
     }
+
 
     private fun registerCommands() {
         getCommand("automessage")?.setExecutor(reloadCmd(this))
