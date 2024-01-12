@@ -1,13 +1,14 @@
 package cz.hesovodoupe.automessages
 
 import ConfigManager
+import cz.foresttech.api.ColorAPI
 import cz.hesovodoupe.automessages.commands.reloadCmd
 import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
-import org.bukkit.ChatColor
 import org.bukkit.scheduler.BukkitRunnable
 
 
@@ -47,6 +48,7 @@ class AutoMessages : JavaPlugin() {
 
         startMessageSendingTask()
         registerCommands()
+
     }
 
     private fun loadConfiguration() {
@@ -74,11 +76,15 @@ class AutoMessages : JavaPlugin() {
                 if (allowRaw && Bukkit.getOnlinePlayers().isNotEmpty()) {
                     val command = "tellraw @a $messageToSend"
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command)
+
                     Bukkit.getOnlinePlayers().forEach { playSoundForPlayer(it, soundEffect) }
-                } else {
+
+                }
+                else {
                     Bukkit.getOnlinePlayers().forEach {
                         playSoundForPlayer(it, soundEffect)
-                        it.sendMessage(ChatColor.translateAlternateColorCodes('&', messageToSend))
+                        it.sendMessage(ColorAPI.colorize(messageToSend))
+
                     }
                 }
             }
@@ -89,6 +95,7 @@ class AutoMessages : JavaPlugin() {
     private fun registerCommands() {
         getCommand("automessage")?.setExecutor(reloadCmd(this))
     }
+
 }
 
     fun playSoundForPlayer(player: Player, soundEffect: String) {
@@ -97,6 +104,7 @@ class AutoMessages : JavaPlugin() {
 
         player.playSound(player.location, Sound.valueOf(soundEffect), soundVolume, soundPitch)
     }
+
 
 
 

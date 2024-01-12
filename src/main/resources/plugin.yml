@@ -3,7 +3,7 @@ version: '${version}'
 main: cz.hesovodoupe.automessages.AutoMessages
 api-version: '1.19'
 authors: [Heso]
-description: Command for POLICE RP
+description: AutoMessages
 website: snezik.cz
 
 commands:

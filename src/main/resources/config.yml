@@ -11,10 +11,12 @@ sound: 'ENTITY_EXPERIENCE_ORB_PICKUP'
 
 # Message List
 # Supports colors using &
+# Also supports Gradient!
 Messages:
   - '&eFirst message, change in config.yml'
-  - '&cSecond message, change in config.yml'
-  - '&bThird message, change in config.yml'
+  - '{#b36000>}Second message{#72cc00<} &3Some gradient'
+  - '&cThird message, change in config.yml'
+  - '{#b36000}Fourth message, change in config.yml'
 
 # Allow Raw Messages? (List below)
 # If you use RAW Messages, standard will be deactivated
@@ -31,4 +33,4 @@ RawMessages:
 
 
 #DO NOT EDIT THIS
-configVersion: '4.0'
+configVersion: '5.0'

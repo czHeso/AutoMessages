@@ -31,5 +31,10 @@
       <option name="name" value="papermc-repo" />
       <option name="url" value="https://repo.papermc.io/repository/maven-public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="colorapi" />
+      <option name="name" value="colorapi" />
+      <option name="url" value="https://jitpack.io" />
+    </remote-repository>
   </component>
 </project>
