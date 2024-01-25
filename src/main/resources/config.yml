@@ -17,6 +17,7 @@ Messages:
   - '{#b36000>}Second message{#72cc00<} &3Some gradient'
   - '&cThird message, change in config.yml'
   - '{#b36000}Fourth message, change in config.yml'
+  - '{#DC143C>}* | Announcement{#FF0000<} {#FFFFFF}&l>> &eNeed help with a plugin?! {#FF7F50>}dsc.gg/hesodev{#FF8C00<}'
 
 # Allow Raw Messages? (List below)
 # If you use RAW Messages, standard will be deactivated

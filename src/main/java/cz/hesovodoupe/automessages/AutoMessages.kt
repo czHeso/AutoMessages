@@ -83,6 +83,7 @@ class AutoMessages : JavaPlugin() {
                 else {
                     Bukkit.getOnlinePlayers().forEach {
                         playSoundForPlayer(it, soundEffect)
+
                         it.sendMessage(ColorAPI.colorize(messageToSend))
 
                     }
