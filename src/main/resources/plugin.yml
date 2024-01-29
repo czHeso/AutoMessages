@@ -17,3 +17,6 @@ permissions:
   am.reload:
     description: "Permissions for reload"
     default: false
+  am.send:
+    description: "Permissions for reload"
+    default: false

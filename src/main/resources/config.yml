@@ -31,7 +31,3 @@ allowRaw: false
 RawMessages:
   - '{"text":"Hover message!","color":"red","bold":false,"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"I am a hover message!","color":"orange","bold":true}]}}}'
   - '{"text":"Click for command!","color":"white","bold":false,"clickEvent":{"action":"run_command","value":"/say COMMAND WORKS"}}'
-
-
-#DO NOT EDIT THIS
-configVersion: '5.0'

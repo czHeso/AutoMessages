@@ -23,11 +23,19 @@ class ConfigManager(private val plugin: JavaPlugin) {
         return sanitizedRawMessages
     }
 
+    fun actionBar(): Boolean {
+        return plugin.config.getBoolean("actionBar", false)
+    }
+    fun barMessages(): List<String> {
+        val config: FileConfiguration = plugin.config
+        val rawMessages: List<String> = config.getStringList("barMessages")
+
+
+        return rawMessages
+    }
+
     fun loadSoundEffect(): String {
         return plugin.config.getString("sound", "test") ?: "test"
-    }
-    fun loadConfigVer(): String {
-        return plugin.config.getString("configVersion", "3.2") ?: "3.2"
     }
 
     fun loadMessages(): List<String> {
