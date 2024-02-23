@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AutoMessages.main.iml" filepath="$PROJECT_DIR$/.idea/modules/AutoMessages.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AutoMessages.test.iml" filepath="$PROJECT_DIR$/.idea/modules/AutoMessages.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.AutoMessages.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.AutoMessages.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.AutoMessages.test.iml" filepath="$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.AutoMessages.test.iml" />
     </modules>
   </component>
 </project>
