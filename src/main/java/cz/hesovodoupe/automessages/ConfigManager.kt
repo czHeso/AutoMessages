@@ -38,6 +38,14 @@ class ConfigManager(private val plugin: JavaPlugin) {
         return plugin.config.getString("sound", "test") ?: "test"
     }
 
+    fun soundPitch(): String {
+        return plugin.config.getString("pitch", "1.0f") ?: "1.0f"
+    }
+
+    fun soundVolume(): String {
+        return plugin.config.getString("volume", "1.0f") ?: "1.0f"
+    }
+
     fun loadMessages(): List<String> {
         val config: FileConfiguration = plugin.config
         val messages: List<String> = config.getStringList("Messages")

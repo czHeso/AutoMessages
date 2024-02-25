@@ -72,7 +72,7 @@ class AutoMessages : JavaPlugin() {
 
 
     fun playSoundForPlayer(player: Player, soundEffect: String) {
-        player.playSound(player.location, Sound.valueOf(soundEffect), DEFAULT_SOUND_VOLUME, DEFAULT_SOUND_PITCH)
+        player.playSound(player.location, Sound.valueOf(soundEffect), config.soundVolume.toFloat(), config.soundPitch.toFloat())
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
@@ -101,7 +101,9 @@ data class AutoMessagesConfig(
     val rawMessages: List<String>,
     val actionBar: Boolean,
     val barMessages: List<String>,
-    var messageIndex: Int = 0
+    var soundVolume: String,
+    var soundPitch: String,
+    var messageIndex: Int = 0,
 ) {
     constructor(configManager: ConfigManager) : this(
         timeDelay = configManager.loadTimeDelay(),
@@ -111,8 +113,12 @@ data class AutoMessagesConfig(
         allowRaw = configManager.useRaw(),
         rawMessages = configManager.rawMessages(),
         actionBar = configManager.actionBar(),
-        barMessages = configManager.barMessages()
+        barMessages = configManager.barMessages(),
+        soundVolume = configManager.soundVolume(),
+        soundPitch = configManager.soundPitch()
     )
 }
+
+
 
 
