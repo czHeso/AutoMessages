@@ -36,4 +36,4 @@ allowRaw: false
 # More support on dsc.gg/hesodev
 RawMessages:
   - '{"text":"Hover message!","color":"red","bold":false,"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"I am a hover message!","color":"orange","bold":true}]}}}'
-  - '{"text":"Click for command!","color":"white","bold":false,"clickEvent":{"action":"run_command","value":"/say COMMAND WORKS"}}'
+  - '["",{"text":"Thanks for "},{"text":"using ","bold":true},{"text":"AutoMessages","color":"dark_green"}]'
